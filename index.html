@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESPEJO MÁGICO | Luz Radiante</title>
+<style>
+:root{--bg:#100b0e;--panel:#21151b;--gold:#e8c76a;--pink:#ffc1da;--white:#fffafc}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+header{text-align:center;padding:28px 14px;background:radial-gradient(circle at top,#54351c,transparent 55%),linear-gradient(135deg,#050405,#21151b);border-bottom:2px solid var(--gold)}
+.logo{margin:8px 0;color:var(--gold);font:clamp(28px,5vw,48px) Georgia,serif;letter-spacing:3px;text-shadow:0 0 18px #e8c76a55}
+.sub{margin:8px 0;color:var(--pink);letter-spacing:5px}.slogan{font:italic 18px Georgia,serif}.decor{font-size:24px;letter-spacing:10px;color:var(--pink);margin:10px}
+nav{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:10px;background:#120c10f5;border-bottom:1px solid #9c7b35}
+nav a{color:var(--gold);text-decoration:none;padding:9px 12px;border-radius:20px}nav a:hover{background:var(--gold);color:#160f12}
+.hero{min-height:330px;padding:48px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(#100b0dcc,#100b0ddd),url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1600&q=80') center/cover}
+.hero h2{color:var(--gold);font:clamp(30px,5vw,48px) Georgia,serif;margin:0 0 14px}.hero p{max-width:650px;line-height:1.7}
+.btn{display:inline-block;border:0;border-radius:25px;padding:11px 17px;margin:4px;background:linear-gradient(135deg,#ffe9a0,#c79b36);color:#21130a;font-weight:bold;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.pink{background:linear-gradient(135deg,#ffd5e5,#ed8db5)}
+.wrap{width:min(1180px,94%);margin:auto;padding:28px 0}.title{text-align:center;color:var(--gold);font:clamp(25px,4vw,35px) Georgia,serif;margin:16px 0 10px}.desc{text-align:center;color:#e7dbe0;line-height:1.7;margin:0 auto 22px}
+.field{display:block;width:100%;padding:12px;margin:8px 0 15px;border:1px solid #9e7c38;border-radius:10px;background:#21171c;color:white}.field:focus{outline:2px solid var(--pink)}
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:18px 0}
+#products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{overflow:hidden;border:1px solid #99772f;border-radius:15px;background:linear-gradient(150deg,#291b22,#130e11);text-align:center;padding:12px}
+.card img{display:block;width:100%;height:215px;object-fit:cover;border-radius:10px;background:#fff}
+.card h3{color:var(--pink);min-height:40px;margin:13px 0 6px}.category{color:#d7c5cd;font-size:14px}.price{color:var(--gold);font-size:23px;font-weight:bold;margin:12px}
+.panel{margin-top:30px;padding:22px;border:1px solid #99772f;border-radius:15px;background:linear-gradient(145deg,#261820,#130e11)}
+.cart-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #58432c}
+#total{color:var(--gold);font-size:24px}.empty{text-align:center;color:#e7dbe0;padding:18px}
+footer{text-align:center;padding:28px 14px;background:#050405;border-top:2px solid var(--gold);color:var(--pink);line-height:1.8}footer h2{color:var(--gold);font-family:Georgia,serif}
+.small{font-size:13px;color:#d9cbd1}
+@media(max-width:600px){.wrap{width:92%}.hero{min-height:300px;padding:38px 14px}nav a{font-size:14px;padding:8px}.panel{padding:15px}.card img{height:230px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="decor">🦋 ✨ 🦋</div>
+  <h1 class="logo">ESPEJO MÁGICO</h1>
+  <h2 class="sub">LUZ RADIANTE</h2>
+  <p class="slogan">“Refleja tu belleza con luz propia”</p>
+  <div class="decor">✧ 💗 ✧</div>
+</header>
+<nav>
+  <a href="#inicio">🏠 Inicio</a><a href="#catalogo">💄 Productos</a>
+  <a href="#carrito">🛒 Carrito (<span id="count">0</span>)</a><a href="#pedido">📝 Pedidos</a><a href="#contacto">📲 Contacto</a>
+</nav>
+<section class="hero" id="inicio">
+  <h2>Tu belleza, tu magia</h2>
+  <p>Descubre maquillaje, perfumes y productos para el cuidado personal. Elige tus favoritos y realiza tu pedido fácilmente.</p>
+  <a class="btn" href="#catalogo">VER PRODUCTOS ✨</a><a class="btn pink" href="#pedido">REALIZAR UN PEDIDO 💗</a>
+</section>
+<main class="wrap">
+  <section id="catalogo">
+    <h2 class="title">✧ Nuestra colección ✧</h2>
+    <p class="desc">Explora nuestros productos y agrégalos al carrito.</p>
+    <label for="search">Buscar productos</label>
+    <input class="field" id="search" type="search" placeholder="Busca labial, perfume, crema...">
+    <div class="filters">
+      <button class="btn" type="button" onclick="setCategory('Todos')">Todos</button>
+      <button class="btn" type="button" onclick="setCategory('Maquillaje')">Maquillaje</button>
+      <button class="btn" type="button" onclick="setCategory('Perfumes')">Perfumes</button>
+      <button class="btn" type="button" onclick="setCategory('Piel')">Cuidado de la piel</button>
+      <button class="btn" type="button" onclick="setCategory('Cabello')">Cabello</button>
+    </div>
+    <div id="products" aria-live="polite"></div>
+  </section>
+  <section class="panel" id="carrito">
+    <h2 class="title">🛒 Tu carrito</h2><p class="desc">Revisa tus productos antes de hacer el pedido.</p>
+    <div id="cart"><p class="empty">Tu carrito está vacío. ¡Elige algo bonito! 💗</p></div>
+    <h3 id="total">Total: Bs 0</h3>
+    <button class="btn pink" type="button" onclick="clearCart()">Vaciar carrito</button>
+    <button class="btn" type="button" onclick="orderCart()">Pedir carrito por WhatsApp 📲</button>
+  </section>
+  <section class="panel" id="pedido">
+    <h2 class="title">💌 Realiza tu pedido</h2><p class="desc">Completa tus datos y se abrirá WhatsApp con el mensaje listo para enviar.</p>
+    <form id="orderForm">
+      <label for="name">Nombre completo</label><input class="field" id="name" autocomplete="name" required placeholder="Tu nombre">
+      <label for="phone">Número de celular</label><input class="field" id="phone" type="tel" autocomplete="tel" required placeholder="Tu número">
+      <label for="location">Ciudad, zona o barrio</label><input class="field" id="location" required placeholder="Ejemplo: Sucre, zona central">
+      <label for="details">Productos y cantidades</label><textarea class="field" id="details" rows="4" required placeholder="Escribe qué productos deseas pedir"></textarea>
+      <label for="delivery">Forma de entrega</label>
+      <select class="field" id="delivery"><option>Coordinar entrega por WhatsApp</option><option>Recoger personalmente</option></select>
+      <button class="btn" type="submit">Enviar pedido por WhatsApp 📲</button>
+    </form>
+    <p class="small">El pedido se enviará cuando confirmes el mensaje dentro de WhatsApp.</p>
+  </section>
+  <section class="panel" id="contacto">
+    <h2 class="title">📲 Contacto</h2>
+    <p class="desc">¿Tienes dudas? Escríbenos para consultar productos y pedidos.</p>
+    <div style="text-align:center"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/59163761237">Contactar por WhatsApp</a></div>
+    <p class="small" style="text-align:center">Número configurado: 63761237 (Bolivia). Verifica que sea el número correcto.</p>
+  </section>
+</main>
+<footer><h2>ESPEJO MÁGICO – LUZ RADIANTE</h2><div>🦋 Refleja tu belleza con luz propia ✨</div><div class="small">Precios de ejemplo; actualízalos antes de publicar tu tienda.</div></footer>
+<script>
+const WA_NUMBER = "59163761237";
+const fallbackSVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><rect width="600" height="600" fill="#21151b"/><circle cx="300" cy="230" r="115" fill="#3b2631" stroke="#e8c76a" stroke-width="5"/><path d="M245 245 Q300 170 355 245 Q300 320 245 245" fill="#ffc1da"/><text x="300" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#e8c76a">ESPEJO MÁGICO</text><text x="300" y="465" text-anchor="middle" font-family="Arial" font-size="23" fill="#ffc1da">LUZ RADIANTE</text></svg>'
+);
+const products = [
+ {id:1,name:"Labial rosa",category:"Maquillaje",price:35,image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80"},
+ {id:2,name:"Set de maquillaje",category:"Maquillaje",price:95,image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80"},
+ {id:3,name:"Brochas de maquillaje",category:"Maquillaje",price:55,image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=80"},
+ {id:4,name:"Perfume elegante",category:"Perfumes",price:120,image:"https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80"},
+ {id:5,name:"Perfume floral",category:"Perfumes",price:110,image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80"},
+ {id:6,name:"Crema para la piel",category:"Piel",price:45,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80"},
+ {id:7,name:"Cuidado facial",category:"Piel",price:60,image:"https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=80"},
+ {id:8,name:"Cuidado del cabello",category:"Cabello",price:50,image:"https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=700&q=80"}
+];
+let cartItems = [];
+let activeCategory = "Todos";
+function renderProducts(){
+ const query=document.getElementById("search").value.trim().toLowerCase();
+ const filtered=products.filter(p=>(activeCategory==="Todos"||p.category===activeCategory)&&(p.name.toLowerCase().includes(query)||p.category.toLowerCase().includes(query)));
+ const area=document.getElementById("products");
+ if(!filtered.length){area.innerHTML='<p class="empty">No se encontraron productos.</p>';return;}
+ area.innerHTML=filtered.map(p=>`<article class="card">
+  <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src=fallbackSVG">
+  <h3>${p.name}</h3><div class="category">${p.category}</div><div class="price">Bs ${p.price}</div>
+  <button class="btn" type="button" onclick="addToCart(${p.id})">🛒 Añadir al carrito</button>
+ </article>`).join("");
+}
+function setCategory(category){activeCategory=category;renderProducts();}
+function addToCart(id){const p=products.find(x=>x.id===id);const found=cartItems.find(x=>x.id===id);if(found)found.qty++;else cartItems.push({...p,qty:1});renderCart();}
+function removeOne(id){const item=cartItems.find(x=>x.id===id);if(item.qty>1)item.qty--;else cartItems=cartItems.filter(x=>x.id!==id);renderCart();}
+function clearCart(){cartItems=[];renderCart();}
+function cartTotal(){return cartItems.reduce((sum,p)=>sum+p.price*p.qty,0);}
+function renderCart(){
+ document.getElementById("count").textContent=cartItems.reduce((sum,p)=>sum+p.qty,0);
+ const area=document.getElementById("cart");
+ if(!cartItems.length)area.innerHTML='<p class="empty">Tu carrito está vacío. ¡Elige algo bonito! 💗</p>';
+ else area.innerHTML=cartItems.map(p=>`<div class="cart-row"><span>${p.name} × ${p.qty}</span><strong>Bs ${p.price*p.qty}</strong><button class="btn pink" type="button" onclick="removeOne(${p.id})">Quitar uno</button></div>`).join("");
+ document.getElementById("total").textContent="Total: Bs "+cartTotal();
+}
+function openWhatsApp(message){window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(message),"_blank","noopener");}
+function orderCart(){
+ if(!cartItems.length){alert("Tu carrito está vacío. Añade productos antes de hacer el pedido.");return;}
+ const lines=cartItems.map(p=>`${p.name} x ${p.qty} = Bs ${p.price*p.qty}`).join("\n");
+ openWhatsApp("Hola, ESPEJO MÁGICO - LUZ RADIANTE. Quiero realizar este pedido:\n\n"+lines+"\n\nTotal aproximado: Bs "+cartTotal());
+}
+document.getElementById("search").addEventListener("input",renderProducts);
+document.getElementById("orderForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const location=document.getElementById("location").value.trim();
+ const details=document.getElementById("details").value.trim();
+ const delivery=document.getElementById("delivery").value;
+ openWhatsApp("Hola, ESPEJO MÁGICO - LUZ RADIANTE. Quiero realizar un pedido.\n\nNombre: "+name+"\nMi celular: "+phone+"\nUbicación: "+location+"\nProductos: "+details+"\nEntrega: "+delivery);
+});
+renderProducts();renderCart();
+</script>
+</body>
+</html>
